@@ -2,83 +2,41 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from "react";
 import supabase from '../../../supa/supabase/supabaseClient';
 import { useNavigate } from 'react-router-dom';
+import './loginC.css'
 
-const Login = () => {
+const LoginC= () => {
   const Navigate = useNavigate();
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email && password) {
-      await handleSupplierLogin();
+      await handleCustomerLogin();
     } else {
       alert('Please fill out all the fields!');
-
-  const handleSuccessfulLogin = async () => {
-    try {
-      
-      const { data, error } = await supabase
-        .from('Login') 
-        .insert([
-          {
-            Personal_id: personalId,
-            password: password,
-          },
-        ]);
-
-      if (error) {
-        throw error;
-      }
-
-      
-      window.alert("Login successful!");
-
-
-      
-    } catch (error) {
-      console.error("Login information insertion error", error.message);
-
     }
   };
 
-  const handleSupplierLogin = async () => {
+  const handleCustomerLogin = async () => {
     try {
-
-      const { data:SupplierData, error:SupplierError } = await supabase      
-      const managerQuery = await supabase
-        .from('Manager')
-        .select('*')
-        .eq('Personal_id', personalId)
-        .eq('password', password)
-        .single();
-
-      const supplierQuery = await supabase
-        .from('Supplier')
+      const { data: CustomerData, error: CustomerError } = await supabase
+        .from('Customer')
         .select('Personal_id,password,full_name')
         .eq('email', email);
 
-      if (SupplierError) {
-        alert(SupplierError.message);
+      if (CustomerError) {
+        alert(CustomerError.message);
         return;
       }
 
-      if (SupplierData &&SupplierData.length > 0) {
-        const storedPassword =SupplierData[0].password;
-
-      const customerQuery = await supabase
-        .from('Customer')
-        .select('*')
-        .eq('Personal_id', personalId)
-        .eq('password', password)
-        .single();
-
+      if (CustomerData && CustomerData.length > 0) {
+        const storedPassword = CustomerData[0].password;
 
         if (password === storedPassword) {
-          alert(`Hello ${SupplierData[0].full_name}`);
-          Navigate('/SupplierDashboard');
+          alert(`Hello ${CustomerData[0].full_name}`);
+          Navigate('/CustomerDashboard');
         } else {
           alert('Wrong password!');
         }
@@ -140,14 +98,12 @@ const Login = () => {
                   <center>Don't have an account? Sign Up here</center>
                 </a>
               </p>
-           
             </div>
           </div>
-
         </form>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default LoginC;

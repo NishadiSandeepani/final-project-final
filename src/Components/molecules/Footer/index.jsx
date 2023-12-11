@@ -50,7 +50,7 @@ const Footer = () => {
           <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="mailto:#" title="Send me an email">thetealeaf23@gmail.com</a></span></i></li>
 
           <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text FB"><a href="https://www.facebook.com/profile.php?id=100067867170062&mibextid=ZbWKwL" title="Follow this page"> Andaradeniya Tea Factory</a></span></i></li>
-          
+
           <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text vlog"><a href="https://youtu.be/aKQquB9WI6M?si=cMTv42BKMbgNHDXe" title="Follow this page">Tea Plantation Vlog</a></span></i></li>
         </ul>
         <hr/>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import supabase from '../../../supa/supabase/supabaseClient';
-import  './AdminDashboard.css';
-const AdminDashboard = () => {
+
+const AdminDashboard_4 = () => {
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ const AdminDashboard = () => {
 
   async function fetchLocations() {
     try {
-      const { data, error } = await supabase.from('Pesticides').select('Personal_id, l, type');
+      const { data, error } = await supabase.from('Tea_leaf_supplier_lot').select(' Personal_id, total, weight, plucked_date, email');
       if (error) {
         console.error('Error fetching locations:', error.message);
       } else {
@@ -24,22 +24,26 @@ const AdminDashboard = () => {
   return (
     <div className="background-D">
       <div className='locate'>
-        <h1>Pesticide Order</h1>
+        <h1>Tea Supply lot</h1>
 
         <table>
           <thead>
             <tr>
               <th>Personal id</th>
-              <th>Capacity</th>
-              <th>Type</th>
+              <th>Total</th>
+              <th>Weight</th>
+              <th>Plucked date</th>
+              <th>email</th>
             </tr>
           </thead>
           <tbody>
             {locations.map((location) => (
               <tr key={location.Personal_id}>
                 <td>{location.Personal_id}</td>
-                <td>{location.l}</td>
-                <td>{location.type}</td>
+                <td>{location.total}</td>
+                <td>{location.weight}</td>
+                <td>{location.plucked_date}</td>
+                <td>{location.email}</td>
               </tr>
             ))}
           </tbody>
@@ -49,6 +53,4 @@ const AdminDashboard = () => {
   );
 };
 
-
-export default AdminDashboard;
-
+export default AdminDashboard_4;

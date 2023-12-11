@@ -59,8 +59,13 @@
     align-items: center;
   }
 
+  
+
 .background-BuyNowPic {
-  background-image: url('file:///C:/Users/Udeera/Desktop/Last%20Project/final-project-final/src/Components/pages/BuyNow/share.webp');
+  background-image: url('C:\Users\USER\Desktop\final-project-final\src\Components\pages\BuyNow\share.webp');
+
+
+
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -85,59 +90,40 @@
 }
 
 .col-50-B {
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex; 
-  align-items: center;
-  justify-content: center;
-}
 
-.btn-B {
-  background-color: #136733;
-  color: #fff;
-  border: 1px solid #136733;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-  padding: 10px 20px;
-  text-align: center;
-  text-transform: uppercase;
-  align-items: center;
-  justify-content: center;
-}
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  
+  .icon-container-B {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .fa-cc-visa-B, .fa-cc-amex-B, .fa-cc-mastercard-B, .fa-cc-discover-B {
+    font-size: 30px;
+    color: #ccc;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+  }
+  .btn-BB{
+    padding-left: 220px;
+  }
+  
 
-.btn-B:hover {
-  background-color: #136733;
-  border-color:#136733 ;
-}
-
-.icon-container-B {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-  align-items: center;
-}
-
-.fa-cc-visa-B,
-.fa-cc-amex-B,
-.fa-cc-mastercard-B,
-.fa-cc-discover-B {
-  font-size: 30px;
-  color: #ccc;
-  align-items: center;
-}
-
-input[type='text'] {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
-}
 
 label {
   margin-bottom: 10px;
@@ -146,3 +132,4 @@ label {
   align-items: center;
   justify-content: center;
 }
+

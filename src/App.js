@@ -20,7 +20,12 @@ import LoanF from './Components/pages/LoanF';
 import AdminDashboard from './Components/pages/AdminDashboard';
 import AdminDashboard_1 from './Components/pages/AdminDashboard_1';
 import AdminDashboard_2 from './Components/pages/AdminDashboard_2';
-
+import ManagerDashboard from './Components/pages/ManagerDashboard';
+import SupplierDashboard from './Components/pages/SupplierDashboard';
+import AdminDashboard_4 from './Components/pages/AdminDashboard_4';
+import LoginM from './Components/pages/LoginM';
+import LoginC from './Components/pages/LoginC';
+import CustomerDashboard from './Components/pages/CustomerDashboard';
 
 
 
@@ -35,6 +40,7 @@ function App() {
       <Route path="/" element={<Home />} />
 
         <Route path="Login" element={<Login />} />
+        <Route path="LoginM" element={<LoginM/>}/>
         <Route path="Customer" element={<Customer/>}/>
         <Route path="Manager" element={<Manager/>}/>
         <Route path="Supplier" element={<Supplier/>}/>
@@ -52,10 +58,13 @@ function App() {
         <Route path="AdminDashboard" element={<AdminDashboard/>}/>
         <Route path="AdminDashboard_1" element={<AdminDashboard_1/>}/>
         <Route path="AdminDashboard_2" element={<AdminDashboard_2/>}/>
-        
-        
-        
-        
+        <Route path="ManagerDashboard" element={<ManagerDashboard/>}/>
+        <Route path="SupplierDashboard" element={<SupplierDashboard/>}/>
+        <Route path="AdminDashboard_4" element={<AdminDashboard_4/>}/>
+        <Route path="LoginC" element={<LoginC/>}/>
+        <Route path="CustomerDashBoard" element={<CustomerDashboard/>}/>
+
+  
        </Routes>
       </BrowserRouter>
       <Footer/>

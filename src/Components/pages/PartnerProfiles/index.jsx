@@ -6,7 +6,7 @@ import supabase from '../../../supa/supabase/supabaseClient';
 const PartnerProfile = () => {
 
   const [formData, setFormData] = useState({
-    lot_id: '',
+    
     total: '',
     weight: '',
     email: '',
@@ -33,16 +33,16 @@ const PartnerProfile = () => {
 
     e.preventDefault();
 
-    const { lot_id, total, email, weight, plucked_date, Personal_id } = formData;
+    const {  total, email, weight, plucked_date, Personal_id } = formData;
 
-    if (!lot_id || !total || !email || !plucked_date || !Personal_id || !weight) {
+    if ( !total || !email || !plucked_date || !Personal_id || !weight) {
       showAlert('Please fill out all fields.');
       return;
     }
 
 
     const formDataToUpdateSupabase = {
-      lot_id: lot_id,
+      
       total: total,
       plucked_date: new Date(plucked_date).toISOString(),
       email: email,
@@ -59,7 +59,7 @@ const PartnerProfile = () => {
     try {
       const { data, error } = await supabase.from('Tea_leaf_supplier_lot').insert([
         {
-          lot_id: formDataToUpdateSupabase.lot_id,
+          
           total: formDataToUpdateSupabase.total,
           plucked_date: formDataToUpdateSupabase.plucked_date,
           email: formDataToUpdateSupabase.email,
@@ -100,16 +100,7 @@ const PartnerProfile = () => {
                 value={formData.Personal_id}
                 onChange={handleInputChange}
               />
-              <label htmlFor="lot_id">Lot ID</label>
-              <input
-                type="text"
-                className="form-control"
-                id="lot_id"
-                name="lot_id"
-                placeholder="Enter your lot ID"
-                value={formData.lot_id}
-                onChange={handleInputChange}
-              />
+              
             </div>
             <div className="form-group">
               <label htmlFor="total">Total</label>
