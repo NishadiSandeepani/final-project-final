@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import supabase from '../../../supa/supabase/supabaseClient';
 
+
 const AdminDashboard_2 = () => {
   
   const [locations, setLocations] = useState([]);

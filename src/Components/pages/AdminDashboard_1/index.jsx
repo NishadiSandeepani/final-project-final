@@ -11,7 +11,7 @@ const AdminDashboard_1 = () => {
 
   async function fetchLocations() {
     try {
-      const { data, error } = await supabase.from('Fertilizer').select('Name, Personal_id, Kg, type');
+      const { data, error } = await supabase.from('Fertilizer').select('Name, Personal_id, Kg, typeF');
       if (error) {
         console.error('Error fetching locations:', error.message);
       } else {
@@ -42,7 +42,6 @@ const AdminDashboard_1 = () => {
     }
   };
   
-
  /* useEffect(() => {
     fetchLocations();
   }, []);
@@ -82,7 +81,7 @@ const AdminDashboard_1 = () => {
                 <td>{location.Name}</td>
                 <td>{location.Kg}</td>
                 <td>{location.typeF}</td>
-             
+                
                 <td>
                   <button onClick={() => handleDelete(location.Personal_id)}>Delete</button>
                 </td>
@@ -95,4 +94,4 @@ const AdminDashboard_1 = () => {
   );
 };
 
-export default AdminDashboard_1
+export default AdminDashboard_1;

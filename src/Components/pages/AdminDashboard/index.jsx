@@ -25,7 +25,7 @@ const AdminDashboard = () => {
  
   const handleDelete = async (personalId) => {
     try {
-      
+
       const { error } = await supabase.from('Pesticides').delete().eq('Personal_id', personalId);
 
       if (error) {
@@ -33,7 +33,6 @@ const AdminDashboard = () => {
         return;
       }
 
-      
       fetchLocations();
     } catch (error) {
       console.error('Error handling delete:', error.message);
