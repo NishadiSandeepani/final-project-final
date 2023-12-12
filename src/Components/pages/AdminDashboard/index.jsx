@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import supabase from '../../../supa/supabase/supabaseClient';
-import './AdminDashboard.css';
+import  './AdminDashboard.css';
+
 
 const AdminDashboard = () => {
   const [locations, setLocations] = useState([]);
@@ -41,6 +42,7 @@ const AdminDashboard = () => {
 
   
   return (
+
     <div className="background-D">
       <div className='locate'>
         <h1>Pesticide Order</h1>

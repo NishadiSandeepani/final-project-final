@@ -62,9 +62,11 @@ const AdminDashboard_2 = () => {
   }*/
 
   return (
+
     <div className="background-D">
       <div className='locate'>
         <h1>Money Order</h1>
+
 
         <table>
           <thead>

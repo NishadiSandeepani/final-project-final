@@ -17,7 +17,7 @@ const BuyNow = () =>{
                   <i class="fa fa-cc-amex-B" style={{color:"blue"}}></i>
                   <i class="fa fa-cc-mastercard-B" style={{color:"red"}}></i>
                   <i class="fa fa-cc-discover-B" style={{color:"orange"}}></i>
-                </div>                            
+                </div>                          
                 <label for="cname">Name on Card</label>
                 <input type="text" id="cname" name="cardname" placeholder="John More Doe"/>
                 <label for="ccnum">Credit card number</label>

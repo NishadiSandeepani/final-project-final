@@ -61,6 +61,7 @@ const AdminDashboard_1 = () => {
 
   return (
     <div className="background-D">
+
       <div className='locate'>
         <h1>Fertilizer Order</h1>
 
@@ -94,4 +95,10 @@ const AdminDashboard_1 = () => {
   );
 };
 
+
+
+
 export default AdminDashboard_1;
+
+
+
