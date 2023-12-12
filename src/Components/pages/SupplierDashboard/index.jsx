@@ -1,8 +1,14 @@
 import React from 'react';
 import './SupplierDashboard.css';
 import graph1 from './graph1.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const SupplierDashboard = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate('/');
+  };
   return (
     <div className="container">
       <aside className="sidebar">
@@ -47,7 +53,7 @@ const SupplierDashboard = () => {
         <ul className="menu two">
           
           <li>
-            <a href="#">
+          <a href="#" onClick={handleLogout}>
               <ion-icon name="log-out-outline"></ion-icon>
               <span>Log out</span>
             </a>

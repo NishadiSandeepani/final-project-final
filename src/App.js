@@ -26,6 +26,9 @@ import AdminDashboard_4 from './Components/pages/AdminDashboard_4';
 import LoginM from './Components/pages/LoginM';
 import LoginC from './Components/pages/LoginC';
 import CustomerDashboard from './Components/pages/CustomerDashboard';
+import FertilizerM from './Components/pages/Products';
+import Products from './Components/pages/Products';
+
 
 
 function App() {
@@ -60,6 +63,9 @@ function App() {
         <Route path="AdminDashboard_4" element={<AdminDashboard_4/>}/>
         <Route path="LoginC" element={<LoginC/>}/>
         <Route path="CustomerDashBoard" element={<CustomerDashboard/>}/>
+        <Route path="Products" element={<Products/>}/>
+
+        
         
         
         

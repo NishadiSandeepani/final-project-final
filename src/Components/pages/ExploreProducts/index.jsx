@@ -1,87 +1,95 @@
-import React, { useState } from "react";
-import blackTea from './blackTea.jpg';
-import greenTea from './greenTea.jpg';
-import teaBags from './teaBags.jpg';
-import blackTeaMini from './blackTeaMini.jpg';
-import greenTeaMini from './greenTeaMini.PNG';
-import './ExploreProducts.css';
+import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import supabase from '../../../supa/supabase/supabaseClient';
 
 const ExploreProducts = () => {
- 
+  const Navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [newProduct, setNewProduct] = useState({
+    name: '',
+    price: '',
+    weight: '',
+    image: '',
+  });
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('ProductCard')
+        .select('*');
+      if (error) {
+        console.error('Error fetching data from Supabase:', error);
+      } else {
+        setProducts(data || []);
+      }
+    } catch (error) {
+      console.error('Error fetching data from Supabase:', error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewProduct((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleAddProduct = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('ProductCard')
+        .upsert([
+          {
+            name: newProduct.name || '',
+            price: newProduct.price || '',
+            weight: newProduct.weight || '',
+            image: newProduct.image || '',
+          },
+        ]);
+
+      if (error) {
+        console.error('Error adding data to Supabase:', error);
+      } else {
+        console.log('Data added successfully:', data);
+        setNewProduct({ name: '', price: '', weight: '', image: '' });
+        fetchProducts(); // Fetch the updated list after adding a new Product
+      }
+      
+    } catch (error) {
+      console.error('Error upserting data into Supabase:', error);
+    }
+  };
+
+  const handleBuyNow = (id) => {
+    Navigate('/BuyNow');
+    console.log('Buy Now for Product with ID:', id);
+  };
+
   return (
     <div>
+      <h1>Explore Products</h1>
       <div className="row row-cols-1 row-cols-md-3 g-4">
-
-        <div className="col">
-          <div className="card">
-            <div className="card-body">
-              <img src={blackTea} alt="theTeaLeaf" width="300px" height="300px" />
-              <h5 className="card-title">Black Tea</h5>
-              <p className="card-text">Price: 850 Rs<br />Weight: 500g</p>
-              <br /><br />
-              <a className="btn-0" aria-current="page" href="buyNow">Buy Now</a>
+        {products.map((product) => (
+          <div key={product.id} className="col">
+            <div className="card1">
+              <div className="card1-body">
+                <img src={product.image} alt={product.name} width="300px" height="300px" />
+                <h5 className="card1-title">{product.name}</h5>
+                <p className="card1-text">Price: {product.price} Rs<br />Weight: {product.weight}</p>
+                <br /><br />
+                <button onClick={() => handleBuyNow(product.id)} className="small-button">
+                  Buy Now
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-      <img src={teaBags} alt="theTeaLeaf" width="300px" height="300px" />
-        <h5 class="card-title">Tea Bags</h5>
-        <p class="card-text">Price: 900 Rs<br/>Weight: 500g</p>
-        <br/><br/>
-        <a class="btn-0" aria-current="page" href="buyNow">Buy Now</a>
-
-        </div>
+        ))}
+        
       </div>
     </div>
-    <div class="col">
-    <div class="card">
-      <div class="card-body">
-      <img src={blackTeaMini} alt="theTeaLeaf" width="300px" height="300px" />
-        <h5 class="card-title">Black Tea Mini </h5>
-        <p class="card-text">Price: 650 Rs<br/>Weight: 200g</p>
-
-
-        <a class="btn-0" aria-current="page" href="buyNow">Buy Now</a>
-
-
-        </div>
-      </div>
-    </div>
-    <div class="col">
-    <div class="card">
-      <div class="card-body">
-      <img src={greenTeaMini} alt="theTeaLeaf" width="300px" height="300px" />
-        <h5 class="card-title">Green Tea Mini</h5>
-        <p class="card-text">Price: 500 Rs<br/>Weight: 200g</p>
-
-
-        <a class="btn-0" aria-current="page" href="buyNow">Buy Now</a>
-
-
-        </div>
-      </div>
-    </div>
-    <div class="col">
-    <div class="card">
-      <div class="card-body">
-      <img src={greenTea} alt="theTeaLeaf" width="300px" height="300px" />
-        <h5 class="card-title">Green Tea</h5>
-        <p class="card-text">Price: 900 Rs<br/>Weight: 500g</p>
-        <a class="btn-0" aria-current="page" href="buyNow">Buy Now</a>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-       
-      
   );
 };
 
-
 export default ExploreProducts;
-
