@@ -10,6 +10,7 @@ const Loan = () => {
     
     l_id: '',
     Personal_id: '',
+    Name: '',
     l:'',
     type:'',
   });
@@ -22,11 +23,12 @@ const Loan = () => {
     e.preventDefault();
 
     const personalId = document.getElementById('Personal_id').value;
+    const Name = document.getElementById('Name').value;
     const l = document.getElementById('l').value;
     const type = document.getElementById('type').value;
 
     
-    if ( !personalId  || !l || !type) {
+    if ( !personalId  || !Name  || !l || !type) {
       showAlert('Please fill out all fields.');
       return;
     }
@@ -34,6 +36,7 @@ const Loan = () => {
     const formDataToUpdateSupabase = {
       
       Personal_id: personalId,
+      Name: Name,
       l: l,
       type: type,
     };
@@ -47,6 +50,7 @@ const Loan = () => {
       const { data, error } = await supabase.from('Pesticides').insert([
         {
           Personal_id: formDataToUpdateSupabase.Personal_id,
+          Name: formDataToUpdateSupabase.Name,
           l: formDataToUpdateSupabase.l,
           type: formDataToUpdateSupabase.type,
         },
@@ -80,6 +84,16 @@ const Loan = () => {
                 id="Personal_id"
                 name="Personal_id"
                 placeholder="Enter your NIC number"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="Name">Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="Name"
+                name="Name"
+                placeholder="Enter your Name"
               />
             </div>
             <div className="form-group">
