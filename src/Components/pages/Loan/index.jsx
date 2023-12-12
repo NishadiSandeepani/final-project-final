@@ -10,6 +10,7 @@ const Loan = () => {
     
     l_id: '',
     Personal_id: '',
+    Name: '',
     l:'',
     type:'',
   });
@@ -22,18 +23,35 @@ const Loan = () => {
     e.preventDefault();
 
     const personalId = document.getElementById('Personal_id').value;
+    const Name = document.getElementById('Name').value;
     const l = document.getElementById('l').value;
     const type = document.getElementById('type').value;
 
     
-    if ( !personalId  || !l || !type) {
+    if ( !personalId  || !Name  || !l || !type) {
       showAlert('Please fill out all fields.');
       return;
     }
+    const { data: supplierData, error: supplierError } = await supabase
+    .from('Supplier')
+    .select('Personal_id')
+    .eq('Personal_id', personalId);
+
+  if (supplierError) {
+    alert('Error fetching data from Supplier: ' + supplierError.message);
+    return;
+  }
+
+ 
+  if (!supplierData || supplierData.length === 0) {
+    showAlert('Invalid Personal_id. Please enter a valid Personal_id');
+    return;
+  }
 
     const formDataToUpdateSupabase = {
       
       Personal_id: personalId,
+      Name: Name,
       l: l,
       type: type,
     };
@@ -47,6 +65,7 @@ const Loan = () => {
       const { data, error } = await supabase.from('Pesticides').insert([
         {
           Personal_id: formDataToUpdateSupabase.Personal_id,
+          Name: formDataToUpdateSupabase.Name,
           l: formDataToUpdateSupabase.l,
           type: formDataToUpdateSupabase.type,
         },
@@ -83,7 +102,17 @@ const Loan = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="l">Capacity</label>
+              <label htmlFor="Name">Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="Name"
+                name="Name"
+                placeholder="Enter your Name"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="l">Poverty</label>
               <input
                 type="l"
                 className="form-control"
@@ -115,3 +144,4 @@ const Loan = () => {
 };
 
 export default Loan;
+

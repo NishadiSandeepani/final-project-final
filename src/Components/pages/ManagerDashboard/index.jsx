@@ -42,21 +42,11 @@ const ManagerDashboard = () => {
               <span>Tea Supply Lot</span>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <ion-icon name="settings-outline"></ion-icon>
-              <span>Settings</span>
-            </a>
-          </li>
+          
         </ul>
         <div className="hr"></div>
         <ul className="menu two">
-          <li>
-            <a href="#">
-              <ion-icon name="help-circle-outline"></ion-icon>
-              <span>Help</span>
-            </a>
-          </li>
+         
           <li>
             <a href="#">
               <ion-icon name="log-out-outline"></ion-icon>

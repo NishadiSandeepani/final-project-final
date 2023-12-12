@@ -93,7 +93,7 @@ const Login = () => {
               <br />
               <br />
               <p className="link">
-                <a href="Signup">
+                <a href="Supplier">
                   <center>Don't have an account? Sign Up here</center>
                 </a>
               </p>

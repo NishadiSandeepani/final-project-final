@@ -12,6 +12,7 @@ const PartnerProfile = () => {
     email: '',
     plucked_date: '',
     Personal_id: '',
+    Name: '',
 
   });
 
@@ -33,16 +34,16 @@ const PartnerProfile = () => {
 
     e.preventDefault();
 
-    const {  total, email, weight, plucked_date, Personal_id } = formData;
+    const {  Name, total, email, weight, plucked_date, Personal_id } = formData;
 
-    if ( !total || !email || !plucked_date || !Personal_id || !weight) {
+    if (!Name || !total || !email || !plucked_date || !Personal_id || !weight) {
       showAlert('Please fill out all fields.');
       return;
     }
 
 
     const formDataToUpdateSupabase = {
-      
+      Name: Name,
       total: total,
       plucked_date: new Date(plucked_date).toISOString(),
       email: email,
@@ -59,7 +60,7 @@ const PartnerProfile = () => {
     try {
       const { data, error } = await supabase.from('Tea_leaf_supplier_lot').insert([
         {
-          
+          Name: formDataToUpdateSupabase.Name,
           total: formDataToUpdateSupabase.total,
           plucked_date: formDataToUpdateSupabase.plucked_date,
           email: formDataToUpdateSupabase.email,
@@ -71,7 +72,7 @@ const PartnerProfile = () => {
       if (error) {
         alert('Invalid Account.' );
       } else {
-        alert('Form submitted. ' + JSON.stringify(data));
+        alert('Form submitted. ' );
         
       }
     } catch (error) {
@@ -100,7 +101,18 @@ const PartnerProfile = () => {
                 value={formData.Personal_id}
                 onChange={handleInputChange}
               />
-              
+              <div className="form-group">
+              <label htmlFor="Name">Name</label>
+              <input
+                type="Name"
+                className="form-control"
+                id="Name"
+                name="Name"
+                placeholder="Enter your name"
+                value={formData.Name}
+                onChange={handleInputChange}
+              />
+            </div>
             </div>
             <div className="form-group">
               <label htmlFor="total">Total</label>
@@ -114,6 +126,7 @@ const PartnerProfile = () => {
                 onChange={handleInputChange}
               />
             </div>
+            
             <div className="form-group">
               <label htmlFor="weight">Weight</label>
               <input

@@ -4,6 +4,7 @@ import './Monetary.css';
 
 const Monetary = () => {
   const [formData, setFormData] = useState({
+    Name: '',
     l_id: '',
     Personal_id: '',
     amount: '',
@@ -24,19 +25,35 @@ const Monetary = () => {
     e.preventDefault();
 
     const personalId = formData.Personal_id;
+    const Name = formData.Name;
     const amount = formData.amount;
 
-    if (!personalId || !amount) {
+    if (!Name || !personalId || !amount) {
       showAlert('Please fill out all fields.');
       return;
     }
+    const { data: supplierData, error: supplierError } = await supabase
+    .from('Supplier')
+    .select('Personal_id')
+    .eq('Personal_id', personalId);
 
+  if (supplierError) {
+    alert('Error fetching data from Supplier: ' + supplierError.message);
+    return;
+  }
+
+  // Check if data exists in Supplier table
+  if (!supplierData || supplierData.length === 0) {
+    showAlert('Invalid Personal_id. Please enter a valid Personal_id');
+    return;
+  }
     
     const isUserLoggedIn = await checkUserLogin(personalId);
 
     if (isUserLoggedIn) {
       const formDataToUpdateSupabase = {
         Personal_id: personalId,
+        Name: Name,
         amount: amount,
       };
 
@@ -49,7 +66,7 @@ const Monetary = () => {
   const checkUserLogin = async (personalId) => {
     try {
       const { data, error } = await supabase
-        .from('Login')
+        .from('Supplier')
         .select('Personal_id')
         .eq('Personal_id', personalId);
 
@@ -64,6 +81,7 @@ const Monetary = () => {
     try {
       const { data, error } = await supabase.from('Monetary_loan').insert([
         {
+          Name: formDataToUpdateSupabase.Name,
           Personal_id: formDataToUpdateSupabase.Personal_id,
           amount: formDataToUpdateSupabase.amount,
         },
@@ -72,7 +90,7 @@ const Monetary = () => {
       if (error) {
         alert('Failed to submit form: ' + error.message);
       } else {
-        alert('Form submitted. ' + JSON.stringify(data));
+        alert('Form submitted. ' /*+ JSON.stringify(data)*/);
       }
     } catch (error) {
       console.log('Error connecting to Supabase: ' + error.message);
@@ -102,6 +120,18 @@ const Monetary = () => {
                 name="Personal_id"
                 placeholder="Enter your NIC number"
                 value={formData.Personal_id}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="Name">Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="Name"
+                name="Name"
+                placeholder="Enter your Name"
+                value={formData.Name}
                 onChange={handleInputChange}
               />
             </div>

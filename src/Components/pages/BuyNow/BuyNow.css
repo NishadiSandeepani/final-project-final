@@ -4,16 +4,22 @@
   margin: 0 auto;
 
   padding: 20px;
-}
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 80%; 
+  max-width: 400px; 
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}  
 
 
 
-.icon-container-B {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-}
 
+
+.background-BuyNowPic {
+  background-image: url('C:\Users\User\Desktop\Last Project\final-project-final\src\Components\pages\BuyNow\share.webp');
+  
 .fa-cc-visa-B, .fa-cc-amex-B, .fa-cc-mastercard-B, .fa-cc-discover-B {
   font-size: 30px;
   color: #ccc;

@@ -4,8 +4,7 @@ import Home from './Components/pages/Home';
 import Login from './Components/pages/Login';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Manager from './Components/pages/Manager';
-import Supplier from './Components/pages/Supplier'
-import Signup from './Components/pages/Signup';
+import Supplier from './Components/pages/Supplier';
 import PartnerProfiles from './Components/pages/PartnerProfiles';
 import BuyNow from './Components/pages/BuyNow';
 import Customer from './Components/pages/Customer';
@@ -26,7 +25,7 @@ import AdminDashboard_4 from './Components/pages/AdminDashboard_4';
 import LoginM from './Components/pages/LoginM';
 import LoginC from './Components/pages/LoginC';
 import CustomerDashboard from './Components/pages/CustomerDashboard';
-
+import FertilizerCard from'./Components/pages/FertilizerCard';
 
 
 
@@ -45,7 +44,6 @@ function App() {
         <Route path="Customer" element={<Customer/>}/>
         <Route path="Manager" element={<Manager/>}/>
         <Route path="Supplier" element={<Supplier/>}/>
-        <Route path="Signup" element={<Signup/>}/>
         <Route path="partner" element={<PartnerProfiles/>}/>
         <Route path="ExploreProducts" element={<ExploreProducts/>}/>
         <Route path="buyNow" element={<BuyNow/>}/>
@@ -64,6 +62,8 @@ function App() {
         <Route path="AdminDashboard_4" element={<AdminDashboard_4/>}/>
         <Route path="LoginC" element={<LoginC/>}/>
         <Route path="CustomerDashBoard" element={<CustomerDashboard/>}/>
+        <Route path="FertilizerCard" element={<FertilizerCard/>}/>
+  
        </Routes>
       </BrowserRouter>
       <Footer/>
