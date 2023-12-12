@@ -3,20 +3,25 @@ import React, { useState } from "react";
 import supabase from '../../../supa/supabase/supabaseClient';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = () => 
+{
   const Navigate = useNavigate();
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
 
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) =>
+   {
     e.preventDefault();
-    if (email && password) {
+    if (email && password)
+     {
       await handleSupplierLogin();
-    } else {
+     } 
+    else 
+    {
       alert('Please fill out all the fields!');
-
+    }
   const handleSuccessfulLogin = async () => {
     try {
       
@@ -148,6 +153,7 @@ const Login = () => {
       </div>
     </div>
   );
+   }
 };
 
 export default Login;

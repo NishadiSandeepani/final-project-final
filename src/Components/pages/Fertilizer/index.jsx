@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ERP from './ERP.jpg';
-import mop from './mop.jpg';
+import MOP from './MOP.jpg';
+import Urea from'./Urea.jpg';
 
 
 const Fertilizer= () => {
@@ -22,7 +23,7 @@ const Fertilizer= () => {
         <div class="col">
     <div class="card1">
       <div class="card1-body">
-      <img src={mop} alt="theTeaLeaf" width="300px" height="300px" />
+      <img src={MOP} alt="theTeaLeaf" width="300px" height="300px" />
         <h5 class="card1-title">MOP</h5>
         <p class="card1-text">Price: 10000 Rs<br/>50Kg</p>
         <br/><br/>
