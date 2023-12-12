@@ -47,8 +47,9 @@ const AddLocation = () => {
       if (error) {
         alert('Error inserting data into Supabase: ' + error.message);
       } else {
-       
+      
         showAlert('You are successfully added location.');
+
       }
     } catch (error) {
       console.log('Error connecting to Supabase: ' + error.message);
