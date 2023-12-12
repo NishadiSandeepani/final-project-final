@@ -94,7 +94,7 @@ const LoginC= () => {
               <br />
               <br />
               <p className="link">
-                <a href="Signup">
+                <a href="Customer">
                   <center>Don't have an account? Sign Up here</center>
                 </a>
               </p>

@@ -32,6 +32,21 @@ const Loan = () => {
       showAlert('Please fill out all fields.');
       return;
     }
+    const { data: supplierData, error: supplierError } = await supabase
+    .from('Supplier')
+    .select('Personal_id')
+    .eq('Personal_id', personalId);
+
+  if (supplierError) {
+    alert('Error fetching data from Supplier: ' + supplierError.message);
+    return;
+  }
+
+ 
+  if (!supplierData || supplierData.length === 0) {
+    showAlert('Invalid Personal_id. Please enter a valid Personal_id');
+    return;
+  }
 
     const formDataToUpdateSupabase = {
       

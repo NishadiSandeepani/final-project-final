@@ -5,8 +5,7 @@ import Home from './Components/pages/Home';
 import Login from './Components/pages/Login';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Manager from './Components/pages/Manager';
-import Supplier from './Components/pages/Supplier'
-import Signup from './Components/pages/Signup';
+import Supplier from './Components/pages/Supplier';
 import PartnerProfiles from './Components/pages/PartnerProfiles';
 import BuyNow from './Components/pages/BuyNow';
 import Customer from './Components/pages/Customer';
@@ -43,7 +42,6 @@ function App() {
         <Route path="Customer" element={<Customer/>}/>
         <Route path="Manager" element={<Manager/>}/>
         <Route path="Supplier" element={<Supplier/>}/>
-        <Route path="Signup" element={<Signup/>}/>
         <Route path="partner" element={<PartnerProfiles/>}/>
         <Route path="ExploreProducts" element={<ExploreProducts/>}/>
         <Route path="buyNow" element={<BuyNow/>}/>

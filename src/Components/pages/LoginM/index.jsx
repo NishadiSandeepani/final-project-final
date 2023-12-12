@@ -9,6 +9,7 @@ const LoginM = () => {
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +35,9 @@ const LoginM = () => {
       if (ManagerData && ManagerData.length > 0) {
         const storedPassword = ManagerData[0].password;
 
+        
         if (password === storedPassword) {
+          
           alert(`Hello ${ManagerData[0].full_name}`);
           Navigate('/ManagerDashboard');
         } else {
@@ -94,7 +97,7 @@ const LoginM = () => {
               <br />
               <br />
               <p className="link">
-                <a href="Signup">
+                <a href="Manager">
                   <center>Don't have an account? Sign Up here</center>
                 </a>
               </p>

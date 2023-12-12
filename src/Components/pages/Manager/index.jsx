@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Manager.css';
 import supabase from '../../../supa/supabase/supabaseClient';
 
-
 const Manager = () => {
+  const Navigate = useNavigate();
   
+
   const [formData, setFormData] = useState({
     fullName: '',
     m_id: '',
@@ -22,7 +24,6 @@ const Manager = () => {
   const gatDataIntoSupabase = async (e) => {
     e.preventDefault();
 
-
     const personalId = document.getElementById('Personal_id').value;
     const fullName = document.getElementById('full_name').value;
     const dateOfBirth = document.getElementById('DOB').value;
@@ -30,29 +31,20 @@ const Manager = () => {
     const contact = document.getElementById('contact').value;
     const password = document.getElementById('password').value;
 
-    
     if (!fullName || !personalId || !dateOfBirth || !email || !contact || !password) {
       showAlert('Please fill out all fields.');
       return;
     }
 
-
     const formDataToUpdateSupabase = {
-
       Personal_id: personalId,
-      fullName:fullName,
+      fullName: fullName,
       dateOfBirth: new Date(dateOfBirth).toISOString(),
       Email: email,
       Contact: contact,
       password: password,
     };
 
-    insertDataIntoSupabase(formDataToUpdateSupabase);
-
-    };
-  
-
-  const insertDataIntoSupabase = async (formDataToUpdateSupabase) => {
     try {
       const { data, error } = await supabase.from('Manager').insert([
         {
@@ -68,14 +60,17 @@ const Manager = () => {
       if (error) {
         alert('Error inserting data into Supabase: ' + error.message);
       } else {
-        alert('Data inserted into Supabase: ' + JSON.stringify(data));
+        //alert('Data inserted into Supabase: ' + JSON.stringify(data));
         showAlert('You are successfully registered.');
+        
+       
+        Navigate('/LoginM');
       }
     } catch (error) {
       console.log('Error connecting to Supabase: ' + error.message);
-
     }
   };
+
   return (
     <div className="background-image4">
       <div className="manager">

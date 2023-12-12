@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './Customer.css';
+import { useNavigate } from 'react-router-dom';
 import supabase from '../../../supa/supabase/supabaseClient';
 
 
 const Customer = () => {
-  
+  const Navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fullName: '',
     m_id: '',
@@ -73,9 +75,11 @@ const Customer = () => {
       if (error) {
         alert('Error inserting data into Supabase: ' + error.message);
       } else {
-        alert('Data inserted into Supabase: ' + JSON.stringify(data));
+        //alert('Data inserted into Supabase: ' + JSON.stringify(data));
         showAlert('You are successfully registered.');
+        Navigate('/LoginC');
       }
+      
     } catch (error) {
       console.log('Error connecting to Supabase: ' + error.message);
     }
