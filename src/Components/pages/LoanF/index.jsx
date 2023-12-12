@@ -7,7 +7,7 @@ import Loanf from './LoanF.css';
 const LoanF = () => {
   
   const [formData, setFormData] = useState({
-    
+    Name: '',
     l_id: '',
     Personal_id: '',
     Kg:'',
@@ -22,11 +22,12 @@ const LoanF = () => {
     e.preventDefault();
 
     const personalId = document.getElementById('Personal_id').value;
+    const Name = document.getElementById('Name').value;
     const Kg = document.getElementById('Kg').value;
     const typeF = document.getElementById('typeF').value;
 
     
-    if ( !personalId  || !Kg || !typeF) {
+    if ( !personalId  || !Name || !Kg || !typeF) {
       showAlert('Please fill out all fields.');
       return;
     }
@@ -34,6 +35,7 @@ const LoanF = () => {
     const formDataToUpdateSupabase = {
       
       Personal_id: personalId,
+      Name: Name,
       Kg: Kg,
       typeF: typeF,
     };
@@ -46,6 +48,7 @@ const LoanF = () => {
     try {
       const { data, error } = await supabase.from('Fertilizer').insert([
         {
+          Name: formDataToUpdateSupabase.Name,
           Personal_id: formDataToUpdateSupabase.Personal_id,
           Kg: formDataToUpdateSupabase.Kg,
           typeF: formDataToUpdateSupabase.typeF,
@@ -80,6 +83,16 @@ const LoanF = () => {
                 id="Personal_id"
                 name="Personal_id"
                 placeholder="Enter your NIC number"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="Name">Name</label>
+              <input
+                type_1="text"
+                className="form-control"
+                id="Name"
+                name="Name"
+                placeholder="Enter your Name"
               />
             </div>
             <div className="form-group">

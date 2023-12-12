@@ -15,7 +15,7 @@
 }
 .site-footer hr.small
 {
-  margin:20px ;
+  margin:10px ;
 }
 .site-footer h6
 {
@@ -35,14 +35,14 @@
 {
   .site-footer [class^=col-]
   {
-    margin-bottom:30px
+    margin-bottom:10px
   }
 }
 @media (max-width:767px)
 {
   .site-footer
   {
-    padding-bottom:0
+    padding-bottom:10
   }
 }
 
