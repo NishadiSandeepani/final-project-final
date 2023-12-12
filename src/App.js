@@ -26,7 +26,7 @@ import AdminDashboard_4 from './Components/pages/AdminDashboard_4';
 import LoginM from './Components/pages/LoginM';
 import LoginC from './Components/pages/LoginC';
 import CustomerDashboard from './Components/pages/CustomerDashboard';
-
+import FertilizerCard from'./Components/pages/FertilizerCard';
 
 
 function App() {
@@ -63,7 +63,7 @@ function App() {
         <Route path="AdminDashboard_4" element={<AdminDashboard_4/>}/>
         <Route path="LoginC" element={<LoginC/>}/>
         <Route path="CustomerDashBoard" element={<CustomerDashboard/>}/>
-
+        <Route path="FertilizerCard" element={<FertilizerCard/>}/>
   
        </Routes>
       </BrowserRouter>

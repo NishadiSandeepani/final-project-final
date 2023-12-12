@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ERP from './ERP.jpg';
 import MOP from './MOP.jpg';
-import Urea from'./Urea.jpg';
+import Urea from './Urea.jpg';
 
 
 const Fertilizer= () => {
@@ -50,4 +50,3 @@ const Fertilizer= () => {
 
 
 export default Fertilizer;
-

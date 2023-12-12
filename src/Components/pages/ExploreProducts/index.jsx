@@ -20,7 +20,7 @@ const ExploreProducts = () => {
               <p className="card-text">Price: 850 Rs<br />Weight: 500g</p>
               <br /><br />
 
-              <a className="btn-0" aria-current="page" href="/">Buy Now</a>
+              <a className="btn-0" aria-current="page" href="buyNow">Buy Now</a>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@ const ExploreProducts = () => {
         <h5 class="card-title">Black Tea</h5>
         <p class="card-text">Price: 850 Rs<br/>Weight: 500g</p>
         <br/><br/>
-        <a class="btn-0" aria-current="page" href="/">Buy Now</a>
+        <a class="btn-0" aria-current="page" href="buyNow">Buy Now</a>
       </div>
       </div>
     </div>
@@ -82,7 +82,7 @@ const ExploreProducts = () => {
         <h5 class="card-title">Green Tea</h5>
         <p class="card-text">Price: 900 Rs<br/>Weight: 500g</p>
 
-        <a class="btn-0" aria-current="page" href="/">Buy Now</a>
+        <a class="btn-0" aria-current="page" href="buyNow">Buy Now</a>
 
         </div>
       </div>
