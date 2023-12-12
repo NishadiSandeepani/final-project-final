@@ -10,7 +10,7 @@ const AdminDashboard_4 = () => {
 
   async function fetchLocations() {
     try {
-      const { data, error } = await supabase.from('Tea_leaf_supplier_lot').select(' Personal_id, total, weight, plucked_date, email');
+      const { data, error } = await supabase.from('Tea_leaf_supplier_lot').select(' Name, Personal_id, total, weight, plucked_date, email');
       if (error) {
         console.error('Error fetching locations:', error.message);
       } else {
@@ -29,7 +29,9 @@ const AdminDashboard_4 = () => {
         <table>
           <thead>
             <tr>
+             
               <th>Personal id</th>
+              <th>Name</th>
               <th>Total</th>
               <th>Weight</th>
               <th>Plucked date</th>
@@ -40,6 +42,7 @@ const AdminDashboard_4 = () => {
             {locations.map((location) => (
               <tr key={location.Personal_id}>
                 <td>{location.Personal_id}</td>
+                <td>{location.Name}</td>
                 <td>{location.total}</td>
                 <td>{location.weight}</td>
                 <td>{location.plucked_date}</td>
