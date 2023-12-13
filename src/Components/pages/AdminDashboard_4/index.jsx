@@ -13,9 +13,7 @@ const AdminDashboard_4 = () => {
 
   async function fetchLocations() {
     try {
-      const { data, error } = await supabase
-        .from('Tea_leaf_supplier_lot')
-        .select('Name, Personal_id, total, weight, plucked_date, email');
+      const { data, error } = await supabase .from('Tea_leaf_supplier_lot').select('Name, Personal_id, total, weight, plucked_date, email');
       if (error) {
         console.error('Error fetching locations:', error.message);
       } else {

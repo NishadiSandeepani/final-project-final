@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import supabase from '../../../supa/supabase/supabaseClient';
+import'./index.css';
 
 const FertilizerCard = () => {
     const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ const FertilizerCard = () => {
           weight: '',
     });
   
-    const [organizations, setOrganizations] = useState([]);
+    const [FertilizerCard, setFertilizerCard] = useState([]);
     const [driveSchoolData, setDriveSchoolData] = useState([]);
     const [editIndex, setEditIndex] = useState(-1);
   
@@ -20,12 +21,12 @@ const FertilizerCard = () => {
     const fetchData = async () => {
       try {
         const { data, error } = await supabase
-        .from('ORG_ORIENTED_CAMPAIGN')
+        .from('fer_ORIENTED_CAMPAIGN')
         .select('*');
         if (error) {
           console.error('Error fetching data from Supabase:', error);
         } else {
-          setOrganizations(data);
+          setFertilizerCard(data);
         }
       } catch (error) {
         console.error('Error fetching data from Supabase:', error);
@@ -46,14 +47,13 @@ const FertilizerCard = () => {
         if (editIndex === -1) {
           // Add new campaign
           const { data, error } = await supabase
-            .from('ORG_ORIENTED_CAMPAIGN')
+            .from('fer_ORIENTED_CAMPAIGN')
             .upsert([
               {
-                orgName: formData.orgName || '',
-                description: formData.description || '',
-                venue: formData.venue || '',
-                volunteerAmount: formData.volunteerAmount || '',
-                date: formData.date || '',
+                ferName: formData.name || '',
+                description: formData.price || '',
+                venue: formData.weight || '',
+                
               },
             ]);
   
@@ -66,15 +66,14 @@ const FertilizerCard = () => {
         } else {
           // Edit existing campaign
           const { data, error } = await supabase
-            .from('ORG_ORIENTED_CAMPAIGN')
+            .from('fer_ORIENTED_CAMPAIGN')
             .upsert([
               {
-                org_id: organizations[editIndex].org_id,
-                orgName: formData.orgName || '',
-                description: formData.description || '',
-                venue: formData.venue || '',
-                volunteerAmount: formData.volunteerAmount || '',
-                date: formData.date || '',
+                fer_id: FertilizerCard[editIndex].fer_id,
+                ferName: formData.name || '',
+                description: formData.price || '',
+                venue: formData.weight || '',
+                
               },
             ]);
   
@@ -98,20 +97,20 @@ const FertilizerCard = () => {
       });
     };
   
-    const handleEdit = (orgId) => {
-      const index = organizations.findIndex((org) => org.org_id === orgId);
+    const handleEdit = (ferId) => {
+      const index = FertilizerCard.findIndex((fer) => fer.fer_id === ferId);
       if (index !== -1) {
-        setFormData(organizations[index]);
+        setFormData(FertilizerCard[index]);
         setEditIndex(index);
       }
     };
   
-    const handleDelete = async (orgId) => {
+    const handleDelete = async (ferId) => {
       try {
         const { data, error } = await supabase
-          .from('ORG_ORIENTED_CAMPAIGN')
+          .from('fer_ORIENTED_CAMPAIGN')
           .delete()
-          .eq('org_id', orgId);
+          .eq('fer_id', ferId);
   
         if (error) {
           console.error('Error deleting data from Supabase:', error);
@@ -126,7 +125,7 @@ const FertilizerCard = () => {
   
     return (
       <div>
-        <h1 className="orgcatite">ADD FERTILIZER</h1>
+        <h1 className="fercatite">ADD FERTILIZER</h1>
         <form onSubmit={handleSubmit} className="form-container">
           <input
             type="text"
@@ -138,7 +137,7 @@ const FertilizerCard = () => {
           
           <input
             type="text"
-            name="Price"
+            name="price"
             placeholder="Price"
             value={formData.price}
             onChange={handleChange}
@@ -150,15 +149,14 @@ const FertilizerCard = () => {
             value={formData.weight}
             onChange={handleChange}
           />
-          
           <button type="submit" className="small-button">
             {editIndex === -1 ? 'Add' : 'Edit'}
           </button>
         </form>
         <div className="fertilizerCard">
-      {organizations.map((fer) => (
+      {FertilizerCard.map((fer) => (
         <React.Fragment key={fer._id}>
-          <div className="organization-card">
+          <div className="feranization-card">
             <div className="fertilizerCard">
               <h2>{fer.name}</h2>
               <p>{fer.weight}</p>
