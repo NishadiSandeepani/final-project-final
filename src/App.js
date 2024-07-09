@@ -28,7 +28,6 @@ import CustomerDashboard from './Components/pages/CustomerDashboard';
 import FertilizerCard from'./Components/pages/FertilizerCard';
 
 
-
 function App() {
   return (
     
